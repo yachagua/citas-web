@@ -77,3 +77,30 @@ body {
   margin: 0;
   font-size: 0.9rem;
 }
+
+/* Responsividad para móviles */
+@media (max-width: 768px) {
+  .hero {
+    padding: 80px 20px;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .btn-lg {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+
+  .service-card img {
+    height: 140px;
+  }
+}
