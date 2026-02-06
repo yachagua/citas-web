@@ -14,12 +14,13 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
 
       - name: Build And Deploy
         uses: Azure/static-web-apps-deploy@v1
         with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          azure_static_web_apps_api_token: f788bb72c14c73af22d668edb4bf4fb0dec92b94b999cdae2dc2ca41dbf6402301-c0b8541b-54f6-4523-8bf7-bea1fa6d3e4900f2431004cd890f
           action: "upload"
           app_location: "/"
           api_location: ""
