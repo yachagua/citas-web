@@ -3,14 +3,30 @@ body {
   font-family: 'Segoe UI', Arial, sans-serif;
   background-color: #fdfdfd;
   color: #333;
+  margin: 0;
+  padding: 0;
 }
 
-/* Hero section */
+/* Hero section con imagen elegante */
 .hero {
-  background: url('https://source.unsplash.com/1600x600/?spa,beauty') no-repeat center center;
+  position: relative;
+  background: url('img/spa-fondo.jpg') no-repeat center center;
   background-size: cover;
   color: white;
-  padding: 100px 0;
+  padding: 120px 0;
+  text-align: center;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4); /* overlay oscuro para contraste */
+}
+
+.hero .container {
+  position: relative;
+  z-index: 1;
 }
 
 .hero h1 {
@@ -20,11 +36,18 @@ body {
 
 .hero p {
   font-size: 1.2rem;
+  margin-bottom: 20px;
 }
 
 /* Tarjetas de servicios */
 .service-card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+}
+
+.service-card img {
+  height: 180px;
+  object-fit: cover;
 }
 
 .service-card:hover {
@@ -36,6 +59,7 @@ body {
 .btn-primary {
   background-color: #e91e63;
   border: none;
+  font-weight: bold;
 }
 
 .btn-primary:hover {
@@ -45,4 +69,11 @@ body {
 /* Footer */
 .footer {
   margin-top: 50px;
+  background-color: #222;
+  color: #ccc;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 0.9rem;
 }
