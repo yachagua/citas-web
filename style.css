@@ -1,0 +1,48 @@
+/* Estilos generales */
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #fdfdfd;
+  color: #333;
+}
+
+/* Hero section */
+.hero {
+  background: url('https://source.unsplash.com/1600x600/?spa,beauty') no-repeat center center;
+  background-size: cover;
+  color: white;
+  padding: 100px 0;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.hero p {
+  font-size: 1.2rem;
+}
+
+/* Tarjetas de servicios */
+.service-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Botón principal */
+.btn-primary {
+  background-color: #e91e63;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #d81b60;
+}
+
+/* Footer */
+.footer {
+  margin-top: 50px;
+}
