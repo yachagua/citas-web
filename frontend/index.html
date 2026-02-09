@@ -96,29 +96,27 @@
 
   <!-- Script para enviar datos a Azure Function -->
   <script>
-    document.querySelector("form").addEventListener("submit", async function(e) {
-      e.preventDefault();
+	document.querySelector("form").addEventListener("submit", async function(e) {
+		e.preventDefault();
 
-      const nombre = document.querySelector("input[placeholder='Nombre']").value;
-      const servicio = document.querySelector("select").value;
-      const fecha = document.querySelector("input[type='date']").value;
-      const hora = document.querySelector("input[type='time']").value;
+		const nombre = document.querySelector("input[placeholder='Nombre']").value;
+		const servicio = document.querySelector("select").value;
+		const fecha = document.querySelector("input[type='date']").value;
+		const hora = document.querySelector("input[type='time']").value;
 
-      const cita = { nombre, servicio, fecha, hora };
+		const cita = { nombre, servicio, fecha, hora };
 
-      try {
-        const response = await fetch("/api/index", {   // 🔹 ahora apunta al endpoint desplegado
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(cita)
-        });
+		const response = await fetch("/api/index", {
+		method: "POST",
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify(cita)
+		});
 
-        const result = await response.json();
-        alert("Respuesta del servidor: " + result.message);
-      } catch (error) {
-        alert("Error al agendar la cita: " + error.message);
-      }
-    });
+		// 🔹 Aquí cambiamos a texto plano
+		const result = await response.text();
+		alert("Respuesta del servidor: " + result);
+		});
   </script>
+
 </body>
 </html>
