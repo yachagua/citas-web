@@ -28,10 +28,10 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
           ###### Repository/Build Configurations ######
-          app_location: "/"        # frontend en la raíz
-          api_location: "api"      # funciones en carpeta api
-          output_location: ""      # no usas build
-          skip_app_build: true     # evita que Oryx intente npm run build
+          app_location: "frontend"   # frontend en carpeta frontend
+          api_location: "api"        # funciones en carpeta api
+          output_location: ""        # no hay carpeta de build
+          skip_app_build: true       # evita que Oryx intente npm run build
           ###### End of Configurations ######
 
   close_pull_request_job:
