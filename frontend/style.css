@@ -1,0 +1,106 @@
+/* Estilos generales */
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #fdfdfd;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* Hero section con imagen elegante */
+.hero {
+  position: relative;
+  background: url('img/spa-fondo.jpg') no-repeat center center;
+  background-size: cover;
+  color: white;
+  padding: 120px 0;
+  text-align: center;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4); /* overlay oscuro para contraste */
+}
+
+.hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+/* Tarjetas de servicios */
+.service-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+}
+
+.service-card img {
+  height: 180px;
+  object-fit: cover;
+}
+
+.service-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Botón principal */
+.btn-primary {
+  background-color: #e91e63;
+  border: none;
+  font-weight: bold;
+}
+
+.btn-primary:hover {
+  background-color: #d81b60;
+}
+
+/* Footer */
+.footer {
+  margin-top: 50px;
+  background-color: #222;
+  color: #ccc;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* Responsividad para móviles */
+@media (max-width: 768px) {
+  .hero {
+    padding: 80px 20px;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .btn-lg {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+
+  .service-card img {
+    height: 140px;
+  }
+}

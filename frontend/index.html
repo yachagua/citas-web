@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salón de Belleza Thiago Chaverra - Reserva de Citas</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Estilos personalizados -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero bg-light py-5">
+    <div class="container text-center">
+      <h1 class="display-4 fw-bold">Bienvenido a nuestro Salón de Belleza Thiago Chaverra el NENÉ</h1>
+      <p class="lead">Cuida tu imagen, reserva tu cita fácilmente</p>
+      <a href="#citas" class="btn btn-primary btn-lg mt-3">Agendar ahora</a>
+    </div>
+  </section>
+
+  <!-- Servicios -->
+  <section class="container my-5">
+    <h2 class="text-center mb-4">Nuestros Servicios</h2>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="card service-card">
+          <img src="https://source.unsplash.com/300x200/?nails" class="card-img-top" alt="Uñas">
+          <div class="card-body text-center">
+            <h5 class="card-title">Uñas</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card service-card">
+          <img src="https://source.unsplash.com/300x200/?haircut" class="card-img-top" alt="Corte de cabello">
+          <div class="card-body text-center">
+            <h5 class="card-title">Corte de cabello</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card service-card">
+          <img src="https://source.unsplash.com/300x200/?hair" class="card-img-top" alt="Alisado">
+          <div class="card-body text-center">
+            <h5 class="card-title">Alisado</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card service-card">
+          <img src="https://source.unsplash.com/300x200/?facial" class="card-img-top" alt="Limpieza facial">
+          <div class="card-body text-center">
+            <h5 class="card-title">Limpieza facial</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Formulario de citas -->
+  <section id="citas" class="container my-5">
+    <h2 class="text-center mb-4">Reserva tu cita ahora</h2>
+    <form class="row g-3">
+      <div class="col-md-6">
+        <input type="text" class="form-control" placeholder="Nombre" required>
+      </div>
+      <div class="col-md-6">
+        <select class="form-select" required>
+          <option value="Uñas">Uñas</option>
+          <option value="Corte de cabello">Corte de cabello</option>
+          <option value="Alisado">Alisado</option>
+          <option value="Limpieza facial">Limpieza facial</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <input type="date" class="form-control" required>
+      </div>
+      <div class="col-md-6">
+        <input type="time" class="form-control" required>
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary w-100">Agendar cita</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer bg-dark text-white text-center py-3">
+    <p>&copy; 2026 Salón de Belleza | Medellín, Colombia</p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Script para enviar datos a Azure Function local -->
+  <script>
+    document.querySelector("form").addEventListener("submit", async function(e) {
+      e.preventDefault();
+
+      const nombre = document.querySelector("input[placeholder='Nombre']").value;
+      const servicio = document.querySelector("select").value;
+      const fecha = document.querySelector("input[type='date']").value;
+      const hora = document.querySelector("input[type='time']").value;
+
+      const cita = { nombre, servicio, fecha, hora };
+
+      try {
+        const response = await fetch("http://localhost:7071/api/AgendaCitas", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(cita)
+        });
+
+        const result = await response.text();
+        alert("Respuesta del servidor: " + result);
+      } catch (error) {
+        alert("Error al agendar la cita: " + error.message);
+      }
+    });
+  </script>
+</body>
+</html>
