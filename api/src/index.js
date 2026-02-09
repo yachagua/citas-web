@@ -1,14 +1,16 @@
 module.exports = async function (context, req) {
   context.log('Procesando datos del formulario...');
 
-  // Capturar datos enviados en el body
   const nombre = req.body?.nombre || "Sin nombre";
-  const correo = req.body?.correo || "Sin correo";
-  const mensaje = req.body?.mensaje || "Sin mensaje";
+  const servicio = req.body?.servicio || "Sin servicio";
+  const fecha = req.body?.fecha || "Sin fecha";
+  const hora = req.body?.hora || "Sin hora";
 
-  // Aquí puedes guardar en base de datos, enviar correo, etc.
+  const cita = { nombre, servicio, fecha, hora };
+
   context.res = {
     status: 200,
-    body: { success: true, message: "Datos recibidos correctamente", data: { nombre, correo, mensaje } }
+    headers: { "Content-Type": "application/json" },
+    body: { success: true, message: "Cita recibida correctamente", data: cita }
   };
 };
